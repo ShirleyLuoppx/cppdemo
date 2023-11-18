@@ -5,7 +5,9 @@ using  namespace std;
 int main(int argc, char const *argv[])
 {
     
-
+/**
+ * 1.11 字符串
+*/
     // 字符串串联
     string aStr = "aaaa";
     string bStr = "bbbbb";
@@ -42,9 +44,6 @@ int main(int argc, char const *argv[])
     cout << "please enter your full name:";
     getline(cin,fullName);
     cout << "your full name is "<< fullName << endl;
-
-
-    
 
     return 0;
 }
