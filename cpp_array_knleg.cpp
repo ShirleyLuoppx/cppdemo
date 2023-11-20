@@ -11,26 +11,32 @@ int main(int argc, char const *argv[])
      */
     // 声明数组的时候就给定数组长度
     string cars[4] = {"fort", "dazhong", "wey", "changan"};
-    string testArrs[4] = {"1", "2", "3", "4"};
+    string testArrs = {"1"};
+    string str = "f";
+    int intArray[4] = {1, 2, 3, 4};
     // 不给定数组长度
-    int test[] = {1, 2, 3};
+    int test[] = {1};
+    int numA = 1;
+    cout << "-------sizeof----------" << endl;
+    cout << sizeof(cars) << endl;     // 128
+    cout << sizeof(testArrs) << endl; // 32
+    cout << sizeof(str) << endl;      // 32-------------->sizeof:string类型的，不管是字符型还是字符型数组的，一个值都占32个字节
+    cout << sizeof(intArray) << endl; // 16
+    cout << sizeof(test) << endl;     // 4
+    cout << sizeof(numA) << endl;     // 4--------------->sizeof(数组):int类型的，不管是整型还是整型数组，一个值占4个字节
 
-    cout << sizeof(cars) << endl;
-    cout << sizeof(testArrs) << endl; 
-    
-    cout << cars->size() << endl; 
-    cout << testArrs->size() << endl; 
-    
+    cout << "-------size----------" << endl;
 
-    cout << cars->length() << endl; 
-    cout << testArrs->length() << endl;
+    cout << cars->size() << endl;    // 4
+    cout << testArrs.size() << endl; // 1
+    cout << str.size() << endl;      // 1--------------->.size()：返回string类型数组/字符的长度
 
-    // cout << test.length << endl;//报错
+    cout << "-------length----------" << endl;
 
-    
-    string str = "hello";
-    cout << "hello's length is " << str.length() << endl; // 5 ，这两个函数倒是可以用来获取字符串的长度，但是都不能用于获取数组的长度
-    cout << "hello's size is " << str.size() << endl;     // 5，这两个函数倒是可以用来获取字符串的长度，但是都不能用于获取数组的长度
+    cout << cars->length() << endl;    // 4
+    cout << testArrs.length() << endl; // 4
+    cout << str.length() << endl;      // 1--------------->.length()：返回string类型数组/字符的长度
+
 
     return 0;
 }

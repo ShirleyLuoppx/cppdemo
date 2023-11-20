@@ -165,14 +165,35 @@ int main(int argc, char const *argv[])
     // 不给定数组长度
     int test[] = {1, 2, 3};
 
+    // cout << cars->size() << endl;//奇怪，数组.size是可以 获取数组长度的，但是上次获取得到时候我记得获取的不是这个值....
     for (int i = 0; i < 4; i++)
     {
         cout << " for content of cars : " << cars[i] << endl; // 注意一下，c++文件中打印中文的冒号： 会导致程序无法 正常运行 以及乱码！！！
     }
+    cout << endl;
 
+    /**
+     * 1.20 引用
+     */
+    string food = "meal";
+    // 创建一个引用变量
+    string &myFood = food;
+    cout << food << endl;   // meal
+    cout << myFood << endl; // meal
+    // 打印food这个变量存储的内存地址（比如0x6c2dff8a0），每次重新运行获取到的地址都不一样；
+    //在c++中，每次新创建一个变量就会给这个变量分配一个内地址，当给变量赋值的时候，这个值就会被存到这个内存地址
+    //内存地址是一个16进制的(0x...)
+    cout << &food << endl;
+    cout << endl;
 
-
-//https://www.w3schools.cn/cpp/cpp_references.html
+    /**
+     * 1.21 指针
+    */
+   //声明一个指针
+   //指针的类型应该与指针所指向的变量的类型一致，指针的值就是所指向的变量的内存地址
+   //声明指针的方式有3种，string* ptr、string *ptr、string * ptr，但是首选第一种噢
+    string* ptr = &food;
+    cout << ptr << endl;
 
     cout << endl;
     return 0;
