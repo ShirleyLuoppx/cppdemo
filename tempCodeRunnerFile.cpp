@@ -1,1 +1,1 @@
-test
+testParams("ppx");
