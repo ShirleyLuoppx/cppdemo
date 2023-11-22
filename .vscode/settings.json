@@ -45,6 +45,7 @@
         "streambuf": "cpp",
         "typeinfo": "cpp",
         "ios": "cpp",
-        "fstream": "cpp"
+        "fstream": "cpp",
+        "csignal": "cpp"
     }
 }
