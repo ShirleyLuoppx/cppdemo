@@ -46,6 +46,8 @@
         "typeinfo": "cpp",
         "ios": "cpp",
         "fstream": "cpp",
-        "csignal": "cpp"
-    }
+        "csignal": "cpp",
+        "bitset": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
 }
