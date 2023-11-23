@@ -47,7 +47,12 @@
         "ios": "cpp",
         "fstream": "cpp",
         "csignal": "cpp",
-        "bitset": "cpp"
+        "bitset": "cpp",
+        "forward_list": "cpp",
+        "list": "cpp",
+        "map": "cpp",
+        "set": "cpp",
+        "unordered_set": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

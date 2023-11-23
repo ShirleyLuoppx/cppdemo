@@ -12,6 +12,13 @@
 #include <list>
 #include <map>
 #include <queue>
+#include <set>
+#include <stack>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
+#include <algorithm>
+#include <iterator>
 
 using namespace std;
 
@@ -227,7 +234,7 @@ void testList()
 }
 
 /**
- * map：是一个以键值对的形式存储的容器
+ * map：map映射，是一个以键值对的形式存储的容器,键是唯一的，如果插入了相同的键，那么后面的数据会覆盖前面的，数据会自动排序
  */
 void testMap()
 {
@@ -236,8 +243,9 @@ void testMap()
 
     // 向 map 中插入键值对
     myMap["Alice"] = 25;
-    myMap["Bob"] = 30;
+    myMap["Alice"] = 10;
     myMap["Charlie"] = 35;
+    myMap["Bob"] = 30;
 
     // 遍历 map 中的键值对
     std::cout << "Map: " << std::endl;
@@ -257,7 +265,7 @@ void testMap()
 }
 
 /**
- * queue:队列是一种先进先出（FIFO）的数据结构，支持pop和push，插入和删除数据
+ * queue:队列是一种先进先出（FIFO）（就像一个两头都通的管子）的数据结构，支持pop和push，插入和删除数据
  */
 void testQueue()
 {
@@ -287,19 +295,225 @@ void testQueue()
 }
 
 /**
- * set
+ * set：是一个有序的不重复的容器，如果插入了重复的值，那么后面的这条数据将会被忽略
  */
 void testSet()
 {
     cout << "----------------------set----------------------" << endl;
+    set<int> mySet;
+
+    // 添加元素
+    mySet.insert(5);
+    mySet.insert(5); // 这条数据会被忽略
+    mySet.insert(2);
+    mySet.insert(8);
+    mySet.insert(1);
+
+    // 遍历元素
+    for (int num : mySet)
+    {
+        cout << num << " ";
+    }
+    cout << endl;
+
+    // 查找元素：在mySey集合中查找内容为2的元素，如果有，则返回一个指向该元素的迭代器，如果没得，则返回mySet.end()
+    int target = 2;
+    if (mySet.find(target) != mySet.end())
+    {
+        cout << " found " << target << " in set" << endl;
+    }
+    else
+    {
+        cout << target << "not found in set" << endl;
+    }
+
+    // 删除元素
+    mySet.erase(8);
+
+    // 再次遍历元素
+    for (int num : mySet)
+    {
+        cout << num << " ";
+    }
+    cout << endl;
 }
 
 /**
- * stack
+ * stack:堆栈，是一种后进先出（LIFO）的数据结构（就像一个桶，先放进去的东西在最下面，后放进去的东西在最上面，可以最先拿出来），支持入栈push和出栈pop
  */
 void testStack()
 {
     cout << "----------------------stack----------------------" << endl;
+    stack<int> myStack;
+
+    // 入栈
+    myStack.push(10);
+    myStack.push(20);
+    myStack.push(30);
+
+    // 获取栈顶元素
+    int topElement = myStack.top();
+    cout << "top element: " << topElement << endl; // 30
+
+    // 出栈
+    myStack.pop();
+
+    // 再次获取栈顶元素
+    topElement = myStack.top(); // 20
+    cout << "top element after pop: " << topElement << endl;
+
+    // 检查栈是否为空
+    bool isEmpty = myStack.empty();
+    if (isEmpty)
+    {
+        cout << "stack is empty" << endl;
+    }
+    else
+    {
+        cout << "stack is not empty" << endl; //
+    }
+
+    // 获取栈的大小
+    int size = myStack.size();
+    cout << "size of stack: " << size << endl; // 2
+}
+
+/**
+ * unorderedMap：是一个无序的不重复的容器，如果插入了重复的值，那么后面的这条数据将会被忽略
+ */
+void testUnorderedMap()
+{
+    cout << "----------------------unorderedMap----------------------" << endl;
+    unordered_map<string, int> myUnorderedMap;
+    myUnorderedMap.insert(make_pair("ppx", 10));
+    myUnorderedMap.insert(make_pair("ppj", 30));
+    myUnorderedMap.insert(make_pair("ppl", 20));
+    myUnorderedMap.insert(make_pair("ppx", 5));
+
+    cout << myUnorderedMap["ppx"] << endl;
+    for (auto const &pair : myUnorderedMap)
+    {
+        cout << pair.first << " " << pair.second << endl;
+    }
+}
+
+/**
+ * unordered_set：是一个无序的不重复的容器，如果插入了重复的值，那么后面的这条数据将会被忽略
+ */
+void testUnorderedSet()
+{
+    cout << "----------------------unordered_set:----------------------" << endl;
+    unordered_set<int> myUnorderedSet;
+    myUnorderedSet.insert(10);
+    myUnorderedSet.insert(1);
+    myUnorderedSet.insert(88);
+    myUnorderedSet.insert(66);
+    myUnorderedSet.insert(66);
+
+    for (auto const &element : myUnorderedSet)
+    {
+        cout << element << " ";
+    }
+    cout << endl;
+
+    myUnorderedSet.erase(10);
+    cout << "after erase element ";
+    for (auto const &elem : myUnorderedSet)
+    {
+        cout << elem << " ";
+    }
+}
+
+/**
+ * vector:是一种支持随机访问的容器，可以在任意位置进行插入和删除
+ */
+void testVector()
+{
+    cout << "----------------------vector----------------------" << endl;
+    std::vector<int> myVector;
+
+    // 向向量中插入元素
+    myVector.push_back(10);
+    myVector.push_back(20);
+    myVector.push_back(30);
+
+    // 访问向量的元素
+    std::cout << "first element: " << myVector[0] << std::endl;
+    std::cout << "second element: " << myVector[1] << std::endl;
+    std::cout << "third element: " << myVector[2] << std::endl;
+
+    // 遍历向量的元素
+    std::cout << "all elements: ";
+    for (const auto &num : myVector)
+    {
+        std::cout << num << " ";
+    }
+    std::cout << std::endl;
+
+    // 获取向量的大小
+    std::cout << "size of vector: " << myVector.size() << std::endl;
+
+    // 清空向量
+    myVector.clear();
+    std::cout << "size of vector after clear: " << myVector.size() << std::endl;
+}
+
+/**
+ * algorithm:是一个包含各种常用算法的算法库
+ */
+void testAlgorithm()
+{
+    cout << "----------------------algorithm----------------------" << endl;
+    std::vector<int> myVector = {5, 2, 8, 1, 9, 3};
+
+    // 使用std::sort函数对向量进行排序
+    std::sort(myVector.begin(), myVector.end());
+
+    // 使用std::for_each函数遍历并输出向量的元素
+    std::cout << "vector after sort: ";
+    std::for_each(myVector.begin(), myVector.end(), [](int num)
+                  { std::cout << num << " "; });
+    std::cout << std::endl;
+
+    // 使用std::find函数查找特定元素
+    int target = 8;
+    auto it = std::find(myVector.begin(), myVector.end(), target);
+    if (it != myVector.end())
+    {
+        std::cout << target << " exists in vector" << std::endl;
+    }
+    else
+    {
+        std::cout << target << " not exists in vector" << std::endl;
+    }
+}
+
+/**
+ * iterator
+ */
+void testIterator()
+{
+    cout << "----------------------iterator----------------------" << endl;
+    std::vector<int> myVector = {1, 2, 3, 4, 5};
+
+    // 使用迭代器遍历向量并输出元素
+    std::cout << "elements in vector: ";
+    for (std::vector<int>::iterator it = myVector.begin(); it != myVector.end(); ++it)
+    {
+        std::cout << *it << " ";
+    }
+    std::cout << std::endl;
+
+    // 使用迭代器访问和修改向量的元素
+    std::vector<int>::iterator it = myVector.begin();
+    *it = 10; // 修改第一个元素
+
+    std::cout << "vector after modify: ";
+    for (const auto &num : myVector)
+    {
+        std::cout << num << " ";
+    }
+    std::cout << std::endl;
 }
 
 int main(int argc, char const *argv[])
@@ -311,6 +525,13 @@ int main(int argc, char const *argv[])
     testList();
     testMap();
     testQueue();
+    testSet();
+    testStack();
+    testUnorderedMap();
+    testUnorderedSet();
+    testVector();
+    testAlgorithm();
+    testIterator();
 
     return 0;
 }
